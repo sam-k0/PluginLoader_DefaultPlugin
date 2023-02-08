@@ -1,0 +1,20 @@
+# depslib dependency file v1.0
+1675808903 source:e:\code__blocks\projects\pluginloader_defaultplugin\main.cpp
+	"gms.h"
+	"InterfaceLoading.h"
+	<iostream>
+
+1675805981 e:\code__blocks\projects\pluginloader_defaultplugin\gms.h
+	<string>
+	<string.h>
+	<iostream>
+
+1675807889 e:\code__blocks\projects\pluginloader_defaultplugin\interfaceloading.h
+	"PluginInterface.h"
+	<Windows.h>
+	<string>
+	<unistd.h>
+	<iostream>
+
+1675805917 e:\code__blocks\projects\pluginloader_defaultplugin\plugininterface.h
+
