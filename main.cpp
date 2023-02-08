@@ -48,7 +48,7 @@ gmx double call(double arg)
     cout << "called plugin with arg "<<arg << endl;
 	IYYC_Callback* impl = getImplementation();
 	cout << "setting data.." << endl;
-	impl->setData(PLUGIN_NAME, "0", "amogu");
+	impl->setData(PLUGIN_NAME, "amogu", "amogu");
 
 	cout << "end." << endl;
 	return arg;
