@@ -14,7 +14,7 @@ gI getImplementation = NULL;
 
 // Global plugin variables needed to function
 IYYC_Callback* gYYC_CallbackHandler = NULL; // the "connection" to the plugin loader
-string         gPluginName          = NULL; // the ID-Name as which the loader knows this plugin. DO NOT CHANGE THIS MANUALLY!
+string         gPluginName          = ""; // the ID-Name as which the loader knows this plugin. DO NOT CHANGE THIS MANUALLY!
 bool           gInitialized         = false;// a simple boolean that gets set to true if the init() method ran successfully
 
 /** \brief This method gets called only once upon initializing the plugin. Do not call this method manually.
@@ -26,6 +26,7 @@ bool           gInitialized         = false;// a simple boolean that gets set to
  */
 gmx PLUGIN_RESULT init(const char* loaderpath, const char* pluginName)
 {
+    cout << "Initializing " << pluginName << endl;
     gPluginName = gmu::string_to_constcharptr(pluginName); // convert the name to a string for easier use
     if(gInitialized) //If the plugin is already initialized return with no error. Usually this method shouldn't be called twice.
     {
@@ -51,7 +52,7 @@ gmx PLUGIN_RESULT init(const char* loaderpath, const char* pluginName)
 
     gYYC_CallbackHandler = getImplementation(); // Allocate the interface pointer to actually communicate this Plugin <--> PluginLoader
     gInitialized = true;                        // Set the flag to true
-    cout << "Successfully initialized Plugin " << gPluginName << endl;
+    cout << "["<<gPluginName<<"]Successfully initialized Plugin " << gPluginName << endl;
     return PLUGIN_SUCCESS;
 }
 
@@ -68,11 +69,8 @@ gmx PLUGIN_RESULT call(double arg)
     {
         return PLUGIN_NOT_INITIALIZED;
     }
-
-    cout << "Called plugin with arg: "<< arg << endl;
     // Set some data to this plugin's storage (dsMap).
 	gYYC_CallbackHandler->setData(gmu::string_to_constcharptr(gPluginName), "amogu", "amogu");
-	cout << "Exiting plugin call." << endl;
 	return PLUGIN_SUCCESS;
 }
 
