@@ -70,7 +70,12 @@ gmx PLUGIN_RESULT call(double arg)
         return PLUGIN_NOT_INITIALIZED;
     }
     // Set some data to this plugin's storage (dsMap).
-	gYYC_CallbackHandler->setData(gmu::string_to_constcharptr(gPluginName), "amogu", "amogu");
+
+    for(int i = 0; i < 31; i++)
+    {
+        gYYC_CallbackHandler->setData(gmu::string_to_constcharptr(gPluginName), gmu::string_to_constcharptr(to_string(i)), "amogu");
+    }
+
 	return PLUGIN_SUCCESS;
 }
 
